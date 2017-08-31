@@ -1,7 +1,7 @@
 {
   "name": "redux-handler-middleware",
-  "version": "1.0.2",
-  "description": "Middleware to call handlers when some action is called.",
+  "version": "1.0.1",
+  "description": "Middleware that executes custom handlers before and after state updates.",
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register"
@@ -12,7 +12,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ZachPerkitny/Base-32"
+    "url": "https://github.com/ZachPerkitny/redux-handler-middleware"
   },
   "author": "Zach Perkitny",
   "license": "ISC",
