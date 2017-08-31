@@ -1,6 +1,6 @@
 {
   "name": "redux-handler-middleware",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Middleware that executes custom handlers before and after state updates.",
   "main": "lib/index.js",
   "scripts": {
