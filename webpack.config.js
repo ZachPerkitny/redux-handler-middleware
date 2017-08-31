@@ -26,6 +26,9 @@ if(NODE_ENV === 'production'){
     config.plugins.push(
         new webpack.optimize.UglifyJsPlugin()
     );
+    config.plugins.push(
+        new webpack.optimize.AggressiveMergingPlugin()
+    )
 }
 
-export default config;
+module.exports = config;
