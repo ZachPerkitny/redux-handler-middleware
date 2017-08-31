@@ -1,5 +1,20 @@
 #circleci configuration
 machine:
+  environment:
+    NODE_ENV: development
   node:
     version:
       7.7.3
+
+dependencies:
+    pre:
+      - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+    post:
+      - npm install -g webpack
+
+deployment:
+  npm:
+    tag: /v[0-9]+(\.[0-9]+)*/
+    commands:
+        - NODE_ENV=production webpack
+        - npm publish
