@@ -35,20 +35,29 @@ export default createStore(
     applyMiddleware(handlerMiddleware)
 );
 ```
-So now when a `FETCH_POSTS_FAILURE` or `FETCH_POST_FAILURE` action is dispatched, the afterHandler will be invoked after the state updates and it will redirect you to `/404`. This provides a simple and intuivtive solution to navigating in response to actions.
+So now when a `FETCH_POSTS_FAILURE` or `FETCH_POST_FAILURE` action is dispatched, the afterHandler will be invoked after the state updates and it will redirect you to `/404`. This provides a simple and intuitive solution to navigating in response to actions.
 
 #### Usage
 `createHandlerMiddleware` - Function
+
 Must be passed an array of plain objects. Each object must include either the `action` or `actions` key.
 ##### Defining Handlers
 `action` -  String
+
 The type of the action. This is used when determining which handlers to fire.
+
 `actions` - Array of actions
+
 Each element must be a string. This is useful when multiple action types use the same handler.
+
 `beforeHandler` - Function
+
 Handler to be called before the state is updated.
+
 `afterHandler` - Function
+
 Handler to be called after the state is updated.
+
 
 ##### Special Thanks
 to [Diego Castillo](https://github.com/diegocasmo) who came up with the original idea in his [blog post](https://medium.com/trisfera/navigation-redirects-through-redux-middleware-1d2518695fd1).
