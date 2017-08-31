@@ -1,0 +1,5 @@
+#circleci configuration
+machine:
+  node:
+    version:
+      7.7.3
