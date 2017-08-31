@@ -1,6 +1,6 @@
 ### Redux Handler Middleware [![CircleCI](https://circleci.com/gh/ZachPerkitny/redux-handler-middleware.svg?style=svg)](https://circleci.com/gh/ZachPerkitny/redux-handler-middleware)
 
-Middleware that provides the ability to call custom handlers when some action or some action in a list has been dispatched. This can be especially useful for handling navigation redirects.
+Middleware that executes handlers before and after state updates.  This can be especially useful for handling navigation redirects.
 
 #### Install
 `npm install redux-handler-middleware --save`
@@ -35,7 +35,7 @@ export default createStore(
     applyMiddleware(handlerMiddleware)
 );
 ```
-So now when a `FETCH_POSTS_FAILURE` or `FETCH_POST_FAILURE` action is dispatched, the afterHandler will be invoked after the state updates and it will redirect you to `/404`. This provides a simple and intuitive solution to navigating in response to actions.
+So now when a `FETCH_POSTS_FAILURE` or a `FETCH_POST_FAILURE` action is dispatched, the afterHandler will be invoked after the state updates and it will redirect you to `/404`. This provides a simple and intuitive solution to navigating in response to actions.
 
 #### Usage
 `createHandlerMiddleware` - Function
