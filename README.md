@@ -40,7 +40,7 @@ So now when a `FETCH_POSTS_FAILURE` or a `FETCH_POST_FAILURE` action is dispatch
 #### Usage
 `createHandlerMiddleware` - Function
 
-Must be passed an array of plain objects. Each object must include either the `action` or `actions` key.
+Must be passed an array of plain objects.
 ##### Defining Handlers
 `action` -  String
 
@@ -48,7 +48,7 @@ The type of the action. This is used when determining which handlers to fire.
 
 `actions` - Array of actions
 
-Each element must be a string. This is useful when multiple action types use the same handler.
+This is useful when multiple action types use the same handler.
 
 `beforeHandler` - Function
 

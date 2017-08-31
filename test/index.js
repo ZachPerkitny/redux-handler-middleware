@@ -3,51 +3,16 @@ import chai from 'chai';
 
 
 describe('redux-handler-middleware', () => {
-    const store = {
-        getState: () => {},
-        dispatch: () => {}
-    };
     /* error handling */
-    it('should throw an error if argument passed is not an array', () => {
-        const errorMessage = 'Expected handlers to be an array.';
-        chai.expect(() => createHandlerMiddleware(55)).to.throw(errorMessage);
-    });
-
-    it('should throw an error if no actions are passed for a handler', () => {
-        const errorMessage = 'Expected action or actions to be defined.';
-        chai.expect(() => createHandlerMiddleware([{}])).to.throw(errorMessage);
-    });
-
-    it('should throw an error if action is not a string or undefined', () => {
-        const errorMessage = 'Expected action to be of type string.';
-        chai.expect(() => createHandlerMiddleware([{
-            action: []
-        }])).to.throw(errorMessage);
-    });
-
     it('should throw an error if actions is not an array', () => {
-        const errorMessage = 'Expected actions to be an array';
+        const errorMessage = 'Expected actions to be an array or undefined.';
         chai.expect(() => createHandlerMiddleware([{
             actions: {}
         }])).to.throw(errorMessage);
     });
 
-    it('should throw an error if actions is an empty array', () => {
-        const errorMessage = 'Expected actions array to have at least 1 action type.';
-        chai.expect(() => createHandlerMiddleware([{
-            actions: []
-        }])).to.throw(errorMessage);
-    });
-
-    it('should throw an error if one of the actions passed is not a string', () => {
-        const errorMessage = 'Expected all actions to be of type string.';
-        chai.expect(() => createHandlerMiddleware([{
-            actions: ['ACTION', 55]
-        }])).to.throw(errorMessage);
-    });
-
     it('should throw an error if the beforeHandler is not a function', () => {
-        const errorMessage = 'Before handler must be either undefined or a function.';
+        const errorMessage = 'Expected beforeHandler to be a function or undefined.';
         chai.expect(() => createHandlerMiddleware([{
             action: 'ACTION',
             beforeHandler: 55
@@ -55,7 +20,7 @@ describe('redux-handler-middleware', () => {
     });
 
     it('should throw an error if the afterHandler is not a function', () => {
-        const errorMessage = 'After handler must be either undefined or a function.';
+        const errorMessage = 'Expected afterHandler to be a function or undefined.';
         chai.expect(() => createHandlerMiddleware([{
             action: 'ACTION',
             afterHandler: 55
@@ -63,6 +28,10 @@ describe('redux-handler-middleware', () => {
     });
 
     it('should call handlers with store action when some action is dispatched', () => {
+        const store = {
+            getState: () => {},
+            dispatch: () => {}
+        };
         const type1 = 'ACTION1';
         const type2 = 'ACTION2';
         const type3 = 'ACTION3';

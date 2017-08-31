@@ -9,29 +9,14 @@ export default function createHandlerMiddleware(handlers){
     let i;
     for(i = 0; i < l; i++){
         const handler = handlers[i];
-        if(!handler.action && !handler.actions){
-            throw new Error('Expected action or actions to be defined.');
-        }
-        if(typeof handler.action !== 'undefined' && typeof handler.action !== 'string'){
-            throw new Error('Expected action to be of type string.');
-        }
-        if(typeof handler.actions !== 'undefined'){
-            if(!Array.isArray(handler.actions)){
-                throw new Error('Expected actions to be an array');
-            } else if(!handler.actions.length) {
-                throw new Error('Expected actions array to have at least 1 action type.')
-            } else {
-                const allStrings = handler.actions.every((action) => typeof action === 'string');
-                if(!allStrings){
-                    throw new Error('Expected all actions to be of type string.');
-                }
-            }
+        if(typeof handler.actions !== 'undefined' && !Array.isArray(handler.actions)){
+            throw new Error('Expected actions to be an array or undefined.');
         }
         if(typeof handler.beforeHandler !== 'undefined' && typeof handler.beforeHandler !== 'function'){
-            throw new Error('Before handler must be either undefined or a function.');
+            throw new Error('Expected beforeHandler to be a function or undefined.');
         }
         if(typeof handler.afterHandler !== 'undefined' && typeof handler.afterHandler !== 'function'){
-            throw new Error('After handler must be either undefined or a function.');
+            throw new Error('Expected afterHandler to be a function or undefined.');
         }
     }
     /* return middleware function */
