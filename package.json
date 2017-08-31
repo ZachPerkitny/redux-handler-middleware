@@ -1,6 +1,6 @@
 {
   "name": "redux-handler-middleware",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Middleware to call handlers when some action is called.",
   "main": "lib/index.js",
   "scripts": {
