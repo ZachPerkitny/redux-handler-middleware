@@ -9,6 +9,9 @@ export default function createHandlerMiddleware(handlers){
     let i;
     for(i = 0; i < l; i++){
         const handler = handlers[i];
+        if(typeof handler.action !== 'undefined' && typeof handler.actions !== 'undefined'){
+            console.warn('Both action and actions are defined, action key will be ignored.');
+        }
         if(typeof handler.actions !== 'undefined' && !Array.isArray(handler.actions)){
             throw new Error('Expected actions to be an array or undefined.');
         }

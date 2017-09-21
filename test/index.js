@@ -1,6 +1,9 @@
 import createHandlerMiddleware from '../src';
 import chai from 'chai';
+import sinon from 'sinon';
+import sinonChai from 'sinon-chai';
 
+chai.use(sinonChai);
 
 describe('redux-handler-middleware', () => {
     /* error handling */
@@ -25,6 +28,18 @@ describe('redux-handler-middleware', () => {
             action: 'ACTION',
             afterHandler: 55
         }])).to.throw(errorMessage);
+    });
+
+    it('should warn the client if both action and actions are defined', () => {
+        const warningMessage = 'Both action and actions are defined, action key will be ignored.';
+        sinon.spy(console, 'warn');
+        createHandlerMiddleware([{
+            action: 'ACTION',
+            actions: [],
+            beforeHandler: () => {},
+            afterHandler: () => {}
+        }]);
+        chai.expect(console.warn).to.have.been.calledWith(warningMessage);
     });
 
     it('should call handlers with store action when some action is dispatched', () => {
