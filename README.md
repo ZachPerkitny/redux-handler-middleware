@@ -1,6 +1,10 @@
 ### Redux Handler Middleware [![CircleCI](https://circleci.com/gh/ZachPerkitny/redux-handler-middleware.svg?style=svg)](https://circleci.com/gh/ZachPerkitny/redux-handler-middleware)
 
-Middleware that executes custom handlers before and after state updates. This can be especially useful for handling navigation redirects.
+Middleware that executes custom handlers before and after state updates.
+
+This can be especially useful when:
+- [Handling navigation redirects](https://medium.com/trisfera/navigation-redirects-through-redux-middleware-1d2518695fd1)
+- [Triggering async operations from synchronous actions](https://medium.com/@kjellmorten/a-simpler-way-to-handle-async-in-redux-bc2a4b952f67)
 
 #### Install
 `npm install redux-handler-middleware --save`
